@@ -70,10 +70,10 @@
                 <table>
                     <tr>
                         <td class="shaded"></td>
-                        <td id="1-2"><input class="firstq" type="text"></td>
+                        <td id="1-2"><input class="firstq" type="text" placeholder="1"></td>
                         <td id="1-3"><input class="firstq" type="text"></td>
                         <td id="1-4"><input class="firstq" type="text"></td>
-                        <td id="1-5"><input class="firstq" type="text"></td>
+                        <td id="1-5"><input class="firstq" type="text" placeholder="2"></td>
                         <td id="1-6"><input class="firstq" type="text"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
@@ -95,7 +95,7 @@
                     </tr>
 
                     <tr>
-                        <td id="3-1"><input class="secondq" type="text"></td>
+                        <td id="3-1"><input class="secondq" type="text" placeholder="2"></td>
                         <td id="3-2"><input class="secondq" type="text"></td>
                         <td id="3-3"><input class="secondq" type="text"></td>
                         <td id="3-4"><input class="secondq" type="text"></td>
@@ -124,7 +124,7 @@
                         <td class="shaded"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
-                        <td id="5-4"><input class="thirdq" type="text"></td>
+                        <td id="5-4"><input class="thirdq" type="text" placeholder="3"></td>
                         <td id="5-5"><input class="thirdq fifthq" type="text"></td>
                         <td id="5-6"><input class="thirdq" type="text"></td>
                         <td class="shaded"></td>
@@ -150,7 +150,7 @@
                         <td class="shaded"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
-                        <td id="7-4"><input class="fourthq" type="text"></td>
+                        <td id="7-4"><input class="fourthq" type="text" placeholder="4"></td>
                         <td id="7-5"><input class="fourthq fifthq" type="text"></td>
                         <td id="7-6"><input class="fourthq" type="text"></td>
                         <td id="7-7"><input class="fourthq" type="text"></td>
@@ -210,14 +210,14 @@
                 </ul>
                 <h3>Across</h3>
                 <ol>
-                    <li>Surface on which the Wimbledon championship is played</li>
-                    <li>Main show court used</li>
-                    <li>Number of Wimbledon Trophies won by Britsh player Andy Murray</li>
+                    <li>On which surface are the Wimbledon Championships played on?</li>
+                    <li>Name the main show court used</li>
+                    <li>How many Wimbledon Championships has the Britsh player Andy Murray won?</li>
                     <li>Name the Williams sister who successfully campaigned for equal prize money in 2007</li>
                 </ol>
                 <h3>Down</h3>
                 <ol>
-                    <li>Fruit spectators enjoy with cream</li>
+                    <li>What fruit do spectators enjoy with cream?</li>
                 </ol>
             </section>
         </main>
@@ -241,6 +241,91 @@
                         }
                     }
                 });
-            }         
+            }
+
+            var inputs = document.querySelectorAll("input.secondq");
+
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener("input", function() {
+                    var allValues = "";
+                    for (var j = 1; j <= 6; j++) {
+                        allValues += document.getElementById("3-" + j).getElementsByTagName("input")[0].value;
+                    }
+                    allValues = allValues.toUpperCase();
+                    if (allValues === "CENTRE") {
+                        for (var k = 1; k <= 6; k++) {
+                            document.getElementById("3-" + k).getElementsByTagName("input")[0].style.color = "green";
+                        }
+                    } else {
+                        for (var k = 1; k <= 6; k++) {
+                            document.getElementById("3-" + k).getElementsByTagName("input")[0].style.color = "red";
+                        }
+                    }
+                });
+            }
+
+            var inputs = document.querySelectorAll("input.thirdq");
+
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener("input", function() {
+                    var allValues = "";
+                    for (var j = 4; j <= 6; j++) {
+                        allValues += document.getElementById("5-" + j).getElementsByTagName("input")[0].value;
+                    }
+                    allValues = allValues.toUpperCase();
+                    if (allValues === "TWO") {
+                        for (var k = 4; k <= 6; k++) {
+                            document.getElementById("5-" + k).getElementsByTagName("input")[0].style.color = "green";
+                        }
+                    } else {
+                        for (var k = 4; k <= 6; k++) {
+                            document.getElementById("5-" + k).getElementsByTagName("input")[0].style.color = "red";
+                        }
+                    }
+                });
+            }
+            
+            var inputs = document.querySelectorAll("input.fourthq");
+
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener("input", function() {
+                    var allValues = "";
+                    for (var j = 4; j <= 8; j++) {
+                        allValues += document.getElementById("7-" + j).getElementsByTagName("input")[0].value;
+                    }
+                    allValues = allValues.toUpperCase();
+                    if (allValues === "VENUS") {
+                        for (var k = 4; k <= 8; k++) {
+                            document.getElementById("7-" + k).getElementsByTagName("input")[0].style.color = "green";
+                        }
+                    } else {
+                        for (var k = 4; k <= 8; k++) {
+                            document.getElementById("7-" + k).getElementsByTagName("input")[0].style.color = "red";
+                        }
+                    }
+                });
+            }
+
+            var inputs = document.querySelectorAll("input.fifthq");
+
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener("input", function() {
+                    var allValues = "";
+                    for (var j = 1; j <= 10; j++) {
+                        allValues += document.getElementById(j + "-5").getElementsByTagName("input")[0].value;
+                    }
+                    allValues = allValues.toUpperCase();
+                    if (allValues === "STRAWBERRY") {
+                        for (var k = 1; k <= 10; k++) {
+                            document.getElementById(k + "-5").getElementsByTagName("input")[0].style.color = "green";
+                        }
+                    } else {
+                        for (var k = 1; k <= 10; k++) {
+                            document.getElementById(k + "-5").getElementsByTagName("input")[0].style.color = "red";
+                        }
+                    }
+                });
+            }
+
         </script>
     </body>
