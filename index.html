@@ -1,6 +1,6 @@
 <!DOCTYPE html>
     <head>
-        <style>
+         <style>
             table {
                 text-align: center;
                 padding:10px;
@@ -21,6 +21,7 @@
                 height: 30px;
                 font-size: 24px;
                 text-align: center;
+                text-transform: uppercase;
                 border: 2px solid #4f0587
             }
 
@@ -29,6 +30,7 @@
                 height: 30px;
                 font-size: 24px;
                 text-align: center;
+                text-transform: uppercase;
                 border: 2px solid #4f0587
             }
 
@@ -37,6 +39,7 @@
                 height: 30px;
                 font-size: 24px;
                 text-align: center;
+                text-transform: uppercase;
                 border: 2px solid #4f0587
             }
 
@@ -45,6 +48,7 @@
                 height: 30px;
                 font-size: 24px;
                 text-align: center;
+                text-transform: uppercase;
                 border: 2px solid #4f0587
             }
 
@@ -53,6 +57,7 @@
                 height: 30px;
                 font-size: 24px;
                 text-align: center;
+                text-transform: uppercase;
                 border: 2px solid #4f0587
             }
         </style>
@@ -81,7 +86,7 @@
                         <td class="shaded"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
-                        <td id="2-5"><input class="firstq" type="text"></td>
+                        <td id="2-5"><input class="fifthq" type="text"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
@@ -90,38 +95,12 @@
                     </tr>
 
                     <tr>
-                        <td id="3-1"><input class="firstq" type="text"></td>
-                        <td id="3-2"><input class="firstq" type="text"></td>
-                        <td id="3-3"><input class="firstq" type="text"></td>
-                        <td id="3-4"><input class="firstq" type="text"></td>
-                        <td id="3-5"><input class="firstq" type="text"></td>
-                        <td id="3-6"><input class="firstq" type="text"></td>
-                        <td class="shaded"></td>
-                        <td class="shaded"></td>
-                        <td class="shaded"></td>
-                        <td class="shaded"></td>
-                    </tr>
-
-                    <tr>
-                        <td class="shaded"></td>
-                        <td class="shaded"></td>
-                        <td class="shaded"></td>
-                        <td class="shaded"></td>
-                        <td id="4-5"><input class="firstq" type="text"></td>
-                        <td class="shaded"></td>
-                        <td class="shaded"></td>
-                        <td class="shaded"></td>
-                        <td class="shaded"></td>
-                        <td class="shaded"></td>
-                    </tr>
-
-                    <tr>
-                        <td class="shaded"></td>
-                        <td class="shaded"></td>
-                        <td class="shaded"></td>
-                        <td id="5-4"><input class="firstq" type="text"></td>
-                        <td id="5-5"><input class="firstq" type="text"></td>
-                        <td id="5-6"><input class="firstq" type="text"></td>
+                        <td id="3-1"><input class="secondq" type="text"></td>
+                        <td id="3-2"><input class="secondq" type="text"></td>
+                        <td id="3-3"><input class="secondq" type="text"></td>
+                        <td id="3-4"><input class="secondq" type="text"></td>
+                        <td id="3-5"><input class="secondq fifthq" type="text"></td>
+                        <td id="3-6"><input class="secondq" type="text"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
@@ -133,7 +112,33 @@
                         <td class="shaded"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
-                        <td id="6-5"><input class="firstq" type="text"></td>
+                        <td id="4-5"><input class="fifthq" type="text"></td>
+                        <td class="shaded"></td>
+                        <td class="shaded"></td>
+                        <td class="shaded"></td>
+                        <td class="shaded"></td>
+                        <td class="shaded"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="shaded"></td>
+                        <td class="shaded"></td>
+                        <td class="shaded"></td>
+                        <td id="5-4"><input class="thirdq" type="text"></td>
+                        <td id="5-5"><input class="thirdq fifthq" type="text"></td>
+                        <td id="5-6"><input class="thirdq" type="text"></td>
+                        <td class="shaded"></td>
+                        <td class="shaded"></td>
+                        <td class="shaded"></td>
+                        <td class="shaded"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="shaded"></td>
+                        <td class="shaded"></td>
+                        <td class="shaded"></td>
+                        <td class="shaded"></td>
+                        <td id="6-5"><input class="fifthq" type="text"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
@@ -194,8 +199,6 @@
                     </tr>
 
                 </table>
-                
-                
             </section>
 
             <section>
@@ -218,4 +221,26 @@
                 </ol>
             </section>
         </main>
+        <script>
+            var inputs = document.querySelectorAll("input.firstq");
+
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].addEventListener("input", function() {
+                    var allValues = "";
+                    for (var j = 2; j <= 6; j++) {
+                        allValues += document.getElementById("1-" + j).getElementsByTagName("input")[0].value;
+                    }
+                    allValues = allValues.toUpperCase();
+                    if (allValues === "GRASS") {
+                        for (var k = 2; k <= 6; k++) {
+                            document.getElementById("1-" + k).getElementsByTagName("input")[0].style.color = "green";
+                        }
+                    } else {
+                        for (var k = 2; k <= 6; k++) {
+                            document.getElementById("1-" + k).getElementsByTagName("input")[0].style.color = "red";
+                        }
+                    }
+                });
+            }         
+        </script>
     </body>
