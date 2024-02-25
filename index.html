@@ -1,10 +1,108 @@
 <!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wimbledon Tennis - Crossword Puzzle Game</title>
          <style>
+            
+            body {
+            	background-color: #D2BCB1;
+                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                color: #121212;
+                margin: 0;
+                padding: 0;
+                }
+
+            header {
+                background-color: #00703C;
+                color: #F1EFE1; 
+                padding: 20px;
+                text-align: center;
+            }
+
+            header::before {
+                content: "";
+                position: absolute;
+                top: -1px;
+                left: 0;
+                width: 100%;
+                height: 5px; 
+                background-color: #F1EFE1; 
+            }
+            
+            h2, h3 {
+                text-align: center;
+                background-color: #8E6652; 
+                color: #F1EFE1; 
+                margin-top: 20px; 
+                margin-bottom: 10px; 
+                padding: 10px; 
+            }
+
+            .instructions {
+                background-color: #F1EFE1;
+                border: 5px solid #00703C;
+                padding: 10px;
+                max-width: 400px; 
+                text-align: left; 
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                margin-bottom: 20px;
+            }
+            
+            ul {
+                list-style-type: none; 
+                padding: 0; 
+            }
+            
+            .instructions li {
+                margin-top: 10px;
+                margin-bottom: 10px; 
+                padding-left: 20px; 
+                position: relative; 
+            }
+            
+            .instructions li::before {
+                content: "•"; 
+                position: absolute; 
+                left: 0; 
+            }
+
+            .instructions ol {
+            list-style-type: none; /
+            margin-left: 5px; 
+            padding-left: 20px; 
+            counter-reset: item; 
+            }
+
+            .instructions ol li {
+            margin-bottom: 10px; 
+            position: relative; 
+            }
+
+            .instructions ol li::before {
+            content: counter(item) "."; 
+            counter-increment: item; 
+            position: absolute; 
+            left: -20px; 
+            }
+
+            img {
+                display: block; 
+                margin-top: 20px;
+                margin-left: auto; 
+                margin-right: auto; 
+            }
+
             table {
+                background-color: #EDECDF;
                 text-align: center;
                 padding:10px;
-                border: 5px solid #096023;
+                border: 5px solid #00703C;
+                margin-left: auto; 
+                margin-right: auto;
             }
 
             td {
@@ -60,20 +158,49 @@
                 text-transform: uppercase;
                 border: 2px solid #4f0587
             }
+
+            footer {
+            background-color: #4f0587;
+            color: #F1EFE1;
+            padding: 20px; 
+            position: relative; 
+            }
+    
+            footer::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: 0;
+            width: 100%;
+            height: 5px; 
+            background-color: #00703C; 
+            }
+
+            a {
+            color: blue;
+            }
+            
+            a:hover {
+            color: #F1EFE1; 
+            }
+
         </style>
-        <title>Wimbledon Tennis - Crossword Puzzle Game</title>
     </head>
     <body>
+        <header>
+            <h1>Crossword Puzzle Game</h1>
+        </header>
         <main>
-            <h1>Wimbledon Tennis - Crossword Puzzle Game</h1>
+            <img src="data:image/png;base64,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" alt ="logo" width="100" height="100">
+            <h2>Wimbledon Tennis Edition</h2>           
             <section>
                 <table>
                     <tr>
                         <td class="shaded"></td>
-                        <td id="1-2"><input class="firstq" type="text" placeholder="1"></td>
+                        <td id="1-2"><input class="firstq" type="text" placeholder="1A"></td>
                         <td id="1-3"><input class="firstq" type="text"></td>
                         <td id="1-4"><input class="firstq" type="text"></td>
-                        <td id="1-5"><input class="firstq" type="text" placeholder="2"></td>
+                        <td id="1-5"><input class="firstq" type="text" placeholder="1D"></td>
                         <td id="1-6"><input class="firstq" type="text"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
@@ -95,7 +222,7 @@
                     </tr>
 
                     <tr>
-                        <td id="3-1"><input class="secondq" type="text" placeholder="2"></td>
+                        <td id="3-1"><input class="secondq" type="text" placeholder="2A"></td>
                         <td id="3-2"><input class="secondq" type="text"></td>
                         <td id="3-3"><input class="secondq" type="text"></td>
                         <td id="3-4"><input class="secondq" type="text"></td>
@@ -124,7 +251,7 @@
                         <td class="shaded"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
-                        <td id="5-4"><input class="thirdq" type="text" placeholder="3"></td>
+                        <td id="5-4"><input class="thirdq" type="text" placeholder="3A"></td>
                         <td id="5-5"><input class="thirdq fifthq" type="text"></td>
                         <td id="5-6"><input class="thirdq" type="text"></td>
                         <td class="shaded"></td>
@@ -150,7 +277,7 @@
                         <td class="shaded"></td>
                         <td class="shaded"></td>
                         <td class="shaded"></td>
-                        <td id="7-4"><input class="fourthq" type="text" placeholder="4"></td>
+                        <td id="7-4"><input class="fourthq" type="text" placeholder="4A"></td>
                         <td id="7-5"><input class="fourthq fifthq" type="text"></td>
                         <td id="7-6"><input class="fourthq" type="text"></td>
                         <td id="7-7"><input class="fourthq" type="text"></td>
@@ -202,25 +329,34 @@
             </section>
 
             <section>
-                <h2>Instructions</h2>
-                <ul>
+                <h3>Instructions</h3>
+                <ul class="instructions">
                     <li>Words can go Across or Down</li>
                     <li>Use the clues to fill in the words above</li>
                     <li>Letters are shared when the words intersect</li>
                 </ul>
-                <h3>Across</h3>
+                <h3>Clues</h3>
+                <div class="instructions">
+                <h4>Across (A)</h4>
                 <ol>
-                    <li>On which surface are the Wimbledon Championships played on?</li>
-                    <li>Name the main show court used</li>
-                    <li>How many Wimbledon Championships has the Britsh player Andy Murray won?</li>
-                    <li>Name the Williams sister who successfully campaigned for equal prize money in 2007</li>
+                    <li>On which <strong><em>surface</em></strong> are the Wimbledon Championships played on?</li>
+                    <li>Name the main <strong><em>show court</em></strong> used</li>
+                    <li>How many Wimbledon Championships has the Britsh player <strong><em>Andy Murray</em></strong> won?</li>
+                    <li>Name the <strong><em>Williams sister</em></strong> who successfully campaigned for equal prize money in 2007</li>
                 </ol>
-                <h3>Down</h3>
+                <h4>Down (D)</h4>
                 <ol>
-                    <li>What fruit do spectators enjoy with cream?</li>
+                    <li>What <strong><em>fruit</em></strong> do spectators typically enjoy with cream?</li>
                 </ol>
+                </div>
             </section>
+
         </main>
+        <footer>
+            <p>
+                <strong>The <em>2024 Championships</em> begins 1 July 2024 - <a href="https://www.wimbledon.com/index.html">Wimbledon.com</a></strong>
+            </p>
+        </footer>
         <script>
             var inputs = document.querySelectorAll("input.firstq");
 
@@ -233,7 +369,7 @@
                     allValues = allValues.toUpperCase();
                     if (allValues === "GRASS") {
                         for (var k = 2; k <= 6; k++) {
-                            document.getElementById("1-" + k).getElementsByTagName("input")[0].style.color = "green";
+                            document.getElementById("1-" + k).getElementsByTagName("input")[0].style.color = "#00703C";
                         }
                     } else {
                         for (var k = 2; k <= 6; k++) {
@@ -254,7 +390,7 @@
                     allValues = allValues.toUpperCase();
                     if (allValues === "CENTRE") {
                         for (var k = 1; k <= 6; k++) {
-                            document.getElementById("3-" + k).getElementsByTagName("input")[0].style.color = "green";
+                            document.getElementById("3-" + k).getElementsByTagName("input")[0].style.color = "#00703C";
                         }
                     } else {
                         for (var k = 1; k <= 6; k++) {
@@ -275,7 +411,7 @@
                     allValues = allValues.toUpperCase();
                     if (allValues === "TWO") {
                         for (var k = 4; k <= 6; k++) {
-                            document.getElementById("5-" + k).getElementsByTagName("input")[0].style.color = "green";
+                            document.getElementById("5-" + k).getElementsByTagName("input")[0].style.color = "#00703C";
                         }
                     } else {
                         for (var k = 4; k <= 6; k++) {
@@ -296,7 +432,7 @@
                     allValues = allValues.toUpperCase();
                     if (allValues === "VENUS") {
                         for (var k = 4; k <= 8; k++) {
-                            document.getElementById("7-" + k).getElementsByTagName("input")[0].style.color = "green";
+                            document.getElementById("7-" + k).getElementsByTagName("input")[0].style.color = "#00703C";
                         }
                     } else {
                         for (var k = 4; k <= 8; k++) {
@@ -317,7 +453,7 @@
                     allValues = allValues.toUpperCase();
                     if (allValues === "STRAWBERRY") {
                         for (var k = 1; k <= 10; k++) {
-                            document.getElementById(k + "-5").getElementsByTagName("input")[0].style.color = "green";
+                            document.getElementById(k + "-5").getElementsByTagName("input")[0].style.color = "#00703C";
                         }
                     } else {
                         for (var k = 1; k <= 10; k++) {
@@ -329,3 +465,4 @@
 
         </script>
     </body>
+    </html>
